@@ -3,8 +3,16 @@
 
 setwd("c://Sabermetrics-with-R")
 #Install these packages
+remove.packages("pitchRx")
+remove.packages("xlsx")
+remove.packages("plyr")
+remove.packages("dplyr")
+remove.packages("cowplot")
+remove.packages("RSQLite")
+install.packages("RSQLite")
 install.packages("xlsx")
 install.packages("plyr")
+install.packages("dplyr")
 install.packages("cowplot")
 install.packages("pitchRx")
 
@@ -89,7 +97,7 @@ nymetsplot
 ########################################################################
 
 my_db <- src_sqlite("GamedayDB.sqlite3", create = TRUE)
-
+scrape(start = "2015-07-01", end = "2015-07-01",suffix = "inning/inning_all.xml", connect = my_db$con)
 
 scrape(start = "2015-07-01", end = "2015-08-30",suffix = "inning/inning_all.xml", connect = my_db$con)
 
